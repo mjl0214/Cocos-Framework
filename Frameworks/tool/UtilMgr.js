@@ -1,8 +1,8 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime : 2020-01-13 15:48:31
- * @LastEditors  : mengjl
+ * @LastEditTime: 2020-03-22 23:18:10
+ * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\tool\UtilMgr.js
  */
@@ -43,6 +43,20 @@ cc.Node.prototype.getId = function () {
 }
 
 module.exports = {
+
+    encrypt(dataString, secretkey, nBits = 256)
+    {// 封印
+        var encryptjs=require('encryptjs');
+        var encrypted = encryptjs.encrypt(dataString, secretkey, nBits);
+        return encrypted;
+    },
+
+    decrypt(encrypted, secretkey, nBits = 256)
+    {// 解印
+        var encryptjs=require('encryptjs');
+        var dataString = encryptjs.decrypt(encrypted, secretkey, nBits);
+        return dataString;
+    },
 
     findNodeById(id, node)
     {
