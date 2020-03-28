@@ -3,11 +3,10 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2020-03-23 18:40:45
+ * @LastEditTime: 2019-12-10 09:21:20
  */
 
 let ResMgr = require("ResMgr")
-let PoolDef = require("PoolDef")
 
 module.exports = {
     _pools_ : {},
@@ -31,18 +30,11 @@ module.exports = {
 
     debugPool()
     {
-        this._log_('debugPool', this._pools_);
-    },
-
-    registerPool(pool_id, url)
-    {
-        PoolDef[pool_id] = url;
-        PoolDef[url] = pool_id;
-        this.initPool(pool_id, url);
+        // this._log_('debugPool', this._pools_);
     },
 
     // 初始化对象池
-    initPool(poolname, url)
+    initPool(poolname, url, num)
     {
         var poolObj = this._pools_[poolname];
         if (poolObj == null) {
@@ -116,7 +108,7 @@ module.exports = {
     {
         var poolUnit = prefabNode.getComponent('PoolUnit');
         if (poolUnit == null || poolUnit == undefined) {
-            console.error('预制体没有挂 PoolUnit 脚本，不能使用 PoolMgr.recoveryUnitPerfab 回收');
+            console.error('预制体没有挂 PoolUnit 脚本，不能使用 PoolManager.recoveryUnitPerfab 回收');
             return;
         }
 

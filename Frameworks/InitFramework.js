@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: mengjl
  * @Date: 2019-10-14 10:43:12
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-22 19:00:37
+ * @LastEditors: mengjl
+ * @LastEditTime: 2020-03-28 15:23:40
  */
 
 console.log('InitFramework')
@@ -34,7 +34,7 @@ if (window.unit == null) {
 
 console.log('Init unit')
 // u_sys
-import USystem from './unit/USystem';
+import USystem from './helper/USystem';
 unit.sys = USystem;
 unit.sys.info();
 
@@ -57,6 +57,10 @@ unit.LogMgr = LogMgr;
 // DataMgr
 import DataMgr from './manager/DataMgr';
 unit.DataMgr = DataMgr;
+
+// DataMgr
+import TimerMgr from './manager/TimerMgr';
+unit.TimerMgr = TimerMgr;
 
 // HotUpdate
 import HotUpdateMgr from './manager/HotUpdateMgr';
@@ -120,8 +124,12 @@ import IHttp from './net/IHttp';
 unit.IHttp = IHttp;
 
 // Platform
-import PlatformHelper from './unit/PlatformHelper';
+import PlatformHelper from './helper/PlatformHelper';
 unit.PlatformHelper = PlatformHelper;
+
+// 多语言
+import InterMgr from './helper/ui18n/InterMgr';
+unit.InterMgr = InterMgr;
 
 // SDK
 import SDKMgr from './sdk/SDKMgr';
@@ -131,11 +139,11 @@ import SDKEvtDef from './sdk/SDKEvtDef';
 unit.SDKEvtDef = SDKEvtDef;
 
 // Transition
-import Transition from './unit/Transition';
+import Transition from './helper/Transition';
 unit.Transition = Transition;
 
 // GuideHelper
-import GuideHelper from './unit/guide/GuideHelper';
+import GuideHelper from './helper/guide/GuideHelper';
 unit.GuideHelper = GuideHelper;
 
 /*

@@ -34,19 +34,19 @@
 })('encryptjs', function (encryptjs) {
 
     'use strict';
-    var readline = require('readline');
-    var fs=require('fs');
+    // var readline = require('readline');
+    // var fs=require('fs');
     var rl;
-    //Electron doesnt support stdin, so dont setup CLI if its not available.
-    try {
-        rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-			  });
-    } catch (e) {
-        rl = null;
-        // console.log('Command line is not supported on this platform', e);
-    }
+    // //Electron doesnt support stdin, so dont setup CLI if its not available.
+    // try {
+    //     rl = readline.createInterface({
+    //         input: process.stdin,
+    //         output: process.stdout
+	// 		  });
+    // } catch (e) {
+    //     rl = null;
+    //     // console.log('Command line is not supported on this platform', e);
+    // }
     encryptjs = { version: '1.0.0' };
 
     //Right before exporting the validator object, pass each of the builtins

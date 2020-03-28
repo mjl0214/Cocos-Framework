@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-15 14:38:00
- * @LastEditTime: 2020-03-09 14:25:33
+ * @LastEditTime: 2020-03-24 14:00:18
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\shader\ShaderUnit.js
@@ -48,6 +48,7 @@ cc.Class({
             visible() {
                 return this.test_debug == true;
             },
+            // serializable : false,
         },
 
         _start : 0,
@@ -60,7 +61,7 @@ cc.Class({
 
     start () {
         this.alertShader();
-        this.node.on(cc.Node.EventType.TOUCH_END, this.next, this);
+        // this.node.on(cc.Node.EventType.TOUCH_END, this.onAlert, this);
     },
 
     update (dt) {
@@ -106,8 +107,9 @@ cc.Class({
         this._start = start;
     },
 
-    next()
+    onAlert()
     {
+        // console.error('onAlert', this.touch_change);
         if (!this.touch_change) {
             return;
         }

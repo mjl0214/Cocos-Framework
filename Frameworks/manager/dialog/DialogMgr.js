@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-03-22 21:23:43
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-25 10:58:08
+ * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \NewResProject\assets\Script\Frameworks\manager\dialog\DialogMgrEx.js
+ * @FilePath: \client\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
  */
 
 let DialogDef = require("DialogDef")

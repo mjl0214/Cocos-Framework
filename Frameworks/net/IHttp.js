@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-11 11:05:13
- * @LastEditTime: 2020-03-07 15:35:10
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-25 10:40:50
+ * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \NewResProject\assets\Script\Frameworks\manager\net\IHttp.js
+ * @FilePath: \client\assets\Scripts\Frameworks\net\IHttp.js
  */
 
 module.exports = {

@@ -1,8 +1,8 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime: 2020-03-22 23:18:10
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-26 17:09:00
+ * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\tool\UtilMgr.js
  */
@@ -210,5 +210,13 @@ module.exports = {
             o[i] = typeof obj[i] === "Object" ? this.deepCloneObj(obj[i]) : obj[i];
         }
         return o;
-    }
+    },
+
+    autoScale(w1, h1, w2, h2)
+    {
+        var sc1 = w1 / w2;
+        var sc2 = h1 / h2;
+
+        return Math.min(sc1, sc2);
+    },
 };
