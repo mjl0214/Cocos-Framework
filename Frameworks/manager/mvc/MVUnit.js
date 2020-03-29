@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2020-03-29 11:16:51
- * @LastEditTime: 2020-03-29 15:41:28
+ * @LastEditTime: 2020-03-29 16:05:29
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \Plant\assets\Scripts\Frameworks\manager\mvc\MVUnit.js
@@ -14,7 +14,8 @@ cc.Class({
 
     properties: {
         bind_key : {
-            default : '',
+            default : -1,
+            type : unit.MVDef,
             tooltip : '绑定值',
         },
         bind_type : {
@@ -27,11 +28,6 @@ cc.Class({
             tooltip : 'uuid',
             readonly : true,
         },
-        t_type : {
-            default : -1,
-            type : unit.MVDef,
-            tooltip : 'uuid',
-        },
     },
 
     editor : {
@@ -42,13 +38,9 @@ cc.Class({
         if (CC_EDITOR) {
             this.setType();
             this.showUUID();
-
-            // cc.Class.Attr/setClassAttr(this, 't_type', {
-            //     type: 'Enum',
-            //     enumList: cc.Enum.getList(cc.Enum({}))
-            // });
-            cc.Class["Attr"].setClassAttr(this, 't_type', 'type', 'Enum');
-            cc.Class["Attr"].setClassAttr(this, 't_type', 'enumList', cc.Enum.getList(unit.MVDef));
+            
+            cc.Class["Attr"].setClassAttr(this, 'bind_key', 'type', 'Enum');
+            cc.Class["Attr"].setClassAttr(this, 'bind_key', 'enumList', cc.Enum.getList(unit.MVDef));
         }
     },
 
