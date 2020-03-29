@@ -119,6 +119,13 @@ unit.DialogMgr = DialogMgr;
 import DialogDef from './manager/dialog/DialogDef';
 unit.DialogDef = DialogDef;
 
+// MVC管理器
+import MVMgr from './manager/mvc/MVMgr';
+unit.MVMgr = MVMgr;
+
+import MVDef from './manager/mvc/MVDef';
+unit.MVDef = MVDef;
+
 // HTTP
 import IHttp from './net/IHttp';
 unit.IHttp = IHttp;
