@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2020-03-23 18:40:45
+ * @LastEditTime: 2020-03-30 10:57:17
  */
 
 let ResMgr = require("ResMgr")
@@ -34,11 +34,13 @@ module.exports = {
         this._log_('debugPool', this._pools_);
     },
 
-    registerPool(pool_id, url)
+    registerPool(id_map)
     {
-        PoolDef[pool_id] = url;
-        PoolDef[url] = pool_id;
-        this.initPool(pool_id, url);
+        PoolDef = cc.Enum(id_map);
+        for (const pool_id in PoolDef) {
+            const url = PoolDef[pool_id];
+            this.initPool(pool_id, url);
+        }
     },
 
     // 初始化对象池

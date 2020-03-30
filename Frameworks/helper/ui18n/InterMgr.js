@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2020-03-28 14:03:12
- * @LastEditTime: 2020-03-28 15:22:30
+ * @LastEditTime: 2020-03-30 09:37:59
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\helper\ui18n\InterMgr.js
@@ -30,7 +30,7 @@ module.exports = {
 
     _loadLanguage(asset)
     {
-        console.error(asset);
+        // console.error(asset);
         this._inter_map[asset.name] = asset.json;
     },
 

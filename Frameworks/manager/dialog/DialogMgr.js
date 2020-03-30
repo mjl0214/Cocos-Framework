@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-03-25 10:58:08
+ * @LastEditTime: 2020-03-30 10:57:27
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
@@ -47,11 +47,13 @@ module.exports = {
         DialogDef.DialogMask = url;
     },
 
-    registerDialog(dialog_id, url)
+    registerDialog(id_map)
     {
-        DialogDef.DialogID[dialog_id] = url;
-        DialogDef.DialogID[url] = dialog_id;
-        unit.PoolMgr.initPool(dialog_id, url);
+        DialogDef.DialogID = cc.Enum(id_map);
+        for (const dialog_id in DialogDef.DialogID) {
+            const url = DialogDef.DialogID[dialog_id];
+            unit.PoolMgr.initPool(dialog_id, url);
+        }
     },
 
     addShowList(dialog_id, params = {})
