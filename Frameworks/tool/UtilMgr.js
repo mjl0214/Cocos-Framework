@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime: 2020-03-26 17:09:00
+ * @LastEditTime: 2020-03-28 17:21:17
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\tool\UtilMgr.js
@@ -218,5 +218,72 @@ module.exports = {
         var sc2 = h1 / h2;
 
         return Math.min(sc1, sc2);
+    },
+
+    randCh(num = 1)
+    {
+        var result = '';
+        for (let i = 0; i < num; i++) {
+            var rand = this.random2Int(0x4e00, 0x9fa5);
+            result += String.fromCharCode(rand.toString(10));
+        }
+        return result;
+    },
+
+    isChinese(s)
+    {
+        return /[\u4e00-\u9fa5]/.test(s);
+    },
+
+    ch2Unicode(str)
+    {
+        if(!str){
+            return;
+        }
+        var unicode = '';
+        for (var i = 0; i <  str.length; i++) {
+            var temp = str.charAt(i);
+            if(this.isChinese(temp)){
+                unicode += '\\u' +  temp.charCodeAt(0).toString(16);
+            }
+            else{
+                unicode += temp;
+            }
+        }
+        
+	    return unicode;
+    },
+
+    unicode2Ch(str)
+    {
+        if(!str){
+            return;
+        }
+        // 控制循环跃迁
+        var len = 1;
+        var result = '';
+            // 注意，这里循环变量的变化是i=i+len 了
+        for (var i = 0; i < str.length; i=i+len) {
+            len = 1;
+            var temp = str.charAt(i);
+            if(temp == '\\'){
+                // 找到形如 \u 的字符序列
+                if(str.charAt(i+1) == 'u'){
+                    // 提取从i+2开始(包括)的 四个字符
+                    var unicode = str.substr((i+2),4); 
+                                    // 以16进制为基数解析unicode字符串，得到一个10进制的数字
+                    result += String.fromCharCode(parseInt(unicode,16).toString(10));
+                    // 提取这个unicode经过了5个字符， 去掉这5次循环
+                    len = 6;
+                }
+                else{
+                    result += temp;
+                }
+            }
+            else{
+                result += temp;
+            }
+        }
+        return result;
     },
 };
