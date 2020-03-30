@@ -23,4 +23,6 @@ ShaderDef.EffectDef = cc.Enum({
     Brightness : 5,
     Fluxay : 6,
     Water : 7,
+	Mosaic : 8,
+    WaveLight : 9,
 });

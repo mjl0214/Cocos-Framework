@@ -13,7 +13,7 @@ CCEffect %{
       properties:
         texture: { value: white }
         alphaThreshold: { value: 0.5 }
-        time: { value: 0 }
+        time: { value: 1.0 }
 }%
 
 
@@ -71,7 +71,7 @@ CCProgram fs %{
   void main () {
     vec4 src_color = v_color * texture2D(texture, v_uv0).rgba;
 
-    float width = 0.008;       //流光的宽度范围 (调整该值改变流光的宽度)
+    float width = 0.08;       //流光的宽度范围 (调整该值改变流光的宽度)
     float start = tan(time/1.414);  //流光的起始x坐标
     float strength = 0.008;   //流光增亮强度   (调整该值改变流光的增亮强度)
     float offset = 0.5;      //偏移值         (调整该值改变流光的倾斜程度)
