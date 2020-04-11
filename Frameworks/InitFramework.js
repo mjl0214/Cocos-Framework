@@ -138,6 +138,9 @@ unit.PlatformHelper = PlatformHelper;
 import InterMgr from './helper/ui18n/InterMgr';
 unit.InterMgr = InterMgr;
 
+import CocosHelper from './helper/CocosHelper';
+unit.CocosHelper = CocosHelper;
+
 // SDK
 import SDKMgr from './sdk/SDKMgr';
 unit.SDKMgr = SDKMgr;
