@@ -6,7 +6,6 @@
  * @LastEditTime: 2020-03-30 10:57:17
  */
 
-let ResMgr = require("ResMgr")
 let PoolDef = require("PoolDef")
 
 module.exports = {
@@ -80,7 +79,7 @@ module.exports = {
 
         let _prefab_node_ = poolObj.pool.get();
         if (!cc.isValid(_prefab_node_)) {
-            ResMgr.getPrefab(poolObj.url, (_prefab_node_) => {
+            unit.ResMgr.getPrefab(poolObj.url, (_prefab_node_) => {
                 if (cc.isValid(_prefab_node_)) {
                     var poolUnit = _prefab_node_.getComponent('PoolUnit');
                     if (poolUnit) {
@@ -128,7 +127,7 @@ module.exports = {
     // 销毁对象
     destoryPrefab(prefabNode)
     {
-        ResMgr.destroy(prefabNode);
+        unit.ResMgr.destroy(prefabNode);
     },
 
     clearAllPool()
@@ -161,7 +160,7 @@ module.exports = {
             
             poolObj.pool.clear();
             poolObj.used.length = 0;
-            ResMgr.releasePrefab(poolObj.url);
+            unit.ResMgr.releasePrefab(poolObj.url);
             // 此处不能清理[收集器]里的内容，因为还要查看
         }
     },
