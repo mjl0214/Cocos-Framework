@@ -7,15 +7,14 @@
  * @FilePath: \Plant\assets\Scripts\Frameworks\USystem.js
  */
 module.exports = {
-    u_version : '1.0.4',
-    version_name : 'potato',
+    u_version : '1.0.3',
+    version_name : 'tomato',
 
     version_list : {
         '1.0.0' : 'apple',
         '1.0.1' : 'orange',
         '1.0.2' : 'banana',
         '1.0.3' : 'tomato',
-		'1.0.4' : 'potato',
     },
 
     info()

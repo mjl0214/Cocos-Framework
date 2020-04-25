@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @Date: 2019-10-14 10:43:12
  * @LastEditors: mengjl
- * @LastEditTime: 2020-03-28 15:23:40
+ * @LastEditTime: 2020-04-10 11:20:02
  */
 
 console.log('InitFramework')
@@ -95,7 +95,6 @@ unit.ResMgr = ResMgr;
 // Audio
 import AudioMgr from './manager/AudioMgr';
 unit.AudioMgr = AudioMgr;
-AudioMgr.setAudioPath('Audio');
 
 // 加载管理
 import LoadMgr from './manager/LoadMgr';
@@ -138,6 +137,7 @@ unit.PlatformHelper = PlatformHelper;
 import InterMgr from './helper/ui18n/InterMgr';
 unit.InterMgr = InterMgr;
 
+// 多语言
 import CocosHelper from './helper/CocosHelper';
 unit.CocosHelper = CocosHelper;
 

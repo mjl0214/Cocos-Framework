@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-11 15:20:29
- * @LastEditTime: 2020-03-30 10:57:27
+ * @LastEditTime: 2020-04-20 19:41:16
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\manager\dialog\DialogMgr.js
@@ -307,7 +307,7 @@ module.exports = {
         var mask_id = this.allocMaskIndex();
 
         this._createDialog(dialog_id, mask_id, params, zIndex);
-        this._createMask(dialog_id, mask_id, zIndex);
+        this._createMask(dialog_id, mask_id, params, zIndex);
 
     },
 
@@ -323,10 +323,10 @@ module.exports = {
         _dialog_comp_.__dialog_name__ = dialog_name;
         _dialog_comp_.dialog_id = dialog_id;
         _dialog_comp_._setMaskId(mask_id);
-        _dialog_comp_.onEnter(params);
-        _dialog_comp_._playOpenAni();
+        // _dialog_comp_.onEnter(params);
+        // _dialog_comp_._playOpenAni();
         
-        this._syncDialogSetting(dialog_id, mask_id);
+        this._syncDialogSetting(dialog_id, mask_id, params);
     },
 
     _createDialog(dialog_id, mask_id, params, zIndex)
@@ -344,7 +344,7 @@ module.exports = {
         });
     },
 
-    _syncDialogSetting(dialog_id, mask_id)
+    _syncDialogSetting(dialog_id, mask_id, params)
     {
         // mask
         var _mask_node_ = this._getMask(mask_id);
@@ -364,9 +364,12 @@ module.exports = {
         _mask_comp_.setMask(_dialog_comp_._getIsMask());
         _mask_comp_.setInput(_dialog_comp_._getIsInput());
         _mask_comp_.setMaskOpacity(_dialog_comp_.maskOpacity);
+
+        _dialog_comp_.onEnter(params);
+        _dialog_comp_._playOpenAni();
     },
 
-    _initMask(mask_node, dialog_id, mask_id, zIndex)
+    _initMask(mask_node, dialog_id, mask_id, params, zIndex)
     {
         this._getParent().addChild(mask_node, zIndex - 1);
         mask_node.setPosition(cc.v2(0, 0));
@@ -374,21 +377,21 @@ module.exports = {
         var _mask_comp_ = mask_node.getComponent('DialogMask');
         _mask_comp_.setMaskId(mask_id);
         this.m_masks.push(mask_node);
-        this._syncDialogSetting(dialog_id, mask_id);
+        this._syncDialogSetting(dialog_id, mask_id, params);
 
     },
 
-    _createMask(dialog_id, mask_id, zIndex)
+    _createMask(dialog_id, mask_id, params, zIndex)
     {
         var _mask_node_ = this.m_maskPool.get();
         if (!cc.isValid(_mask_node_)) {
             cc.loader.loadRes(DialogDef.DialogMask, cc.Prefab, (err, mask_prefab) => {
                 var _mask_node_ = cc.instantiate(mask_prefab);
-                this._initMask(_mask_node_, dialog_id, mask_id, zIndex);
+                this._initMask(_mask_node_, dialog_id, mask_id, params, zIndex);
             })
             return;
         }
-        this._initMask(_mask_node_, dialog_id, mask_id, zIndex);
+        this._initMask(_mask_node_, dialog_id, mask_id, params, zIndex);
 
     },
 
@@ -420,6 +423,22 @@ module.exports = {
             }
         }
         return null;
+    },
+
+    setMaskInput(mask_id, input)
+    {
+        var _mask_node_ = this._getMask(mask_id);
+        if (_mask_node_) {
+            _mask_node_.getComponent('DialogMask').setInput(input);
+        }
+    },
+
+    setMaskMask(mask_id, mask)
+    {
+        var _mask_node_ = this._getMask(mask_id);
+        if (_mask_node_) {
+            _mask_node_.getComponent('DialogMask').setMask(mask);
+        }
     },
 
     allocMaskIndex()

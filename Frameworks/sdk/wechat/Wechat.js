@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-21 14:02:46
- * @LastEditTime: 2020-03-22 21:29:32
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-08 15:55:19
+ * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \Plant\assets\Scripts\Frameworks\sdk\wechat\Wechat.js
+ * @FilePath: \client\assets\Scripts\Frameworks\sdk\wechat\Wechat.js
  */
 
 let SDKBase = require("SDKBase")
@@ -40,10 +40,21 @@ cc.Class({
         unit.SDKMgr.onRegisterCallback('wxShareCallback', 'V', 'unit.SDKMgr.getSDK(\'wechat\').shareCallback');
     },
 
+    login()
+    {
+        unit.SDKMgr.callWechatMethod('wxLogin', 'V');
+    },
+
+    getCode()
+    {
+        return unit.SDKMgr.callWechatMethod('getCode', 'V');
+    },
+
     loginCallback(errCode)
     {
-        unit.log('loginCallback', errCode);
-        unit.EventMgr.dispatch(unit.SDKEvtDef.SDK_WECHAT_LOGIN, {errCode : errCode});
+        var codeid = unit.SDKMgr.callWechatMethod('getCode', 'S');
+        unit.log('loginCallback', errCode, codeid); 
+        unit.EventMgr.dispatch(unit.SDKEvtDef.SDK_WECHAT_LOGIN, {errCode : errCode, codeid : codeid});
     },
 
     shareCallback(errCode, openId)

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @Date: 2019-11-15 17:29:36
  * @LastEditors: mengjl
- * @LastEditTime: 2019-11-15 17:32:10
+ * @LastEditTime: 2020-04-01 20:33:06
  */
 
 module.exports = {
@@ -17,6 +17,9 @@ module.exports = {
         switch (event.keyCode) {
             case cc.macro.KEY.escape:
                 unit.ResMgr.logger();
+                break;
+            case cc.macro.KEY.t:
+                uTool.UtilMgr.treeNode();
                 break;
             default:
                 break;

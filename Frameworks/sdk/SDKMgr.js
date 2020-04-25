@@ -1,8 +1,8 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-21 11:05:49
- * @LastEditTime: 2020-03-03 15:16:48
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-09 17:07:34
+ * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\sdk\SDKMgr.js
  */
@@ -18,6 +18,7 @@ module.exports = {
     // WECHAT_API : 'com/huanyou/lgd/vivo/WeChat',
     TTAD_API : 'uSDK/apis/ttad/TTAd',
     TALK_API : 'uSDK/apis/talkingdata/TalkData',
+    OPENINS_API : 'uSDK/apis/openInstall/OpenIns',
 
     sdk_map : new Object(),
 

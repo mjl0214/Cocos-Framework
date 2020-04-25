@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2020-04-10 10:46:16
- * @LastEditTime: 2020-04-10 13:53:53
+ * @LastEditTime: 2020-04-14 13:22:21
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\helper\CocosHelper.js
@@ -12,9 +12,19 @@ module.exports = {
     _camera_ : null,
     m_fullPath : '/storage/emulated/0/',
 
-    capture(file_name)
+    capture(file_name, camera = null)
     {
-        this._createCamera();
+        if (cc.isValid(camera)) {
+            this._camera_ = camera;
+            let texture = new cc.RenderTexture();
+            texture.initWithSize(cc.winSize.width, cc.winSize.height, cc.gfx.RB_FMT_S8);
+            this._camera_.targetTexture = texture;
+        }
+        else
+        {
+            this._createCamera();
+        }
+        
 
         this._camera_.render();
 
@@ -47,6 +57,7 @@ module.exports = {
         }
 
         let filePath = jsb.fileUtils.getWritablePath() + file_name + '.png';
+        // let filePath = this.m_fullPath + file_name + '.png';
         // console.error("saveFile", filePath);
         let success = jsb.saveImageData(picData, width, height, filePath);
         if (success) {

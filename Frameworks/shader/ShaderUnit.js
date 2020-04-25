@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-15 14:38:00
- * @LastEditTime: 2020-03-31 13:28:40
+ * @LastEditTime: 2020-03-24 14:00:18
  * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \UnitFramework\assets\Script\Frameworks\shader\ShaderUnit.js
+ * @FilePath: \client\assets\Scripts\Frameworks\shader\ShaderUnit.js
  */
 
 let ShaderMgr = require("ShaderMgr")
@@ -48,21 +48,20 @@ cc.Class({
             visible() {
                 return this.test_debug == true;
             },
+            // serializable : false,
         },
 
         _start : 0,
         _max : 65535,
     },
 
-    editor : {
-        executeInEditMode : true,
-    },
+    // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
 
     start () {
         this.alertShader();
-        this.setDebug(this.touch_change);
+        // this.node.on(cc.Node.EventType.TOUCH_END, this.onAlert, this);
     },
 
     update (dt) {
@@ -95,6 +94,10 @@ cc.Class({
             return;
         }
 
+        // if (material.effect._properties['time'] == undefined) {
+        //     return;
+        // }
+
         let start = this._start;
         if (start > this.max) start = 0;
         start += dt;
@@ -114,12 +117,4 @@ cc.Class({
         this.alertShader();
     },
     
-    setDebug(debug)
-    {
-        if (debug) {
-            this.node.on(cc.Node.EventType.TOUCH_END, this.onAlert, this);
-        } else {
-            this.node.off(cc.Node.EventType.TOUCH_END, this.onAlert, this);
-        }
-    },
 });

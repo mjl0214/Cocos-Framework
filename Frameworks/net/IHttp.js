@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-11 11:05:13
- * @LastEditTime: 2020-03-25 10:40:50
+ * @LastEditTime: 2020-04-14 11:43:32
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\net\IHttp.js
@@ -29,8 +29,12 @@ module.exports = {
 
                 if(xhr.status >= 200 && xhr.status < 300) {
                     var respone = xhr.responseText;
-                    var resJson = JSON.parse(respone);
-                    if (callback) {callback(resJson);}
+                    try {
+                        var resJson = JSON.parse(respone);
+                        if (callback) {callback(resJson);}
+                    } catch (error) {
+                        
+                    }
                 }else{
                     if (callback) {callback(null);}
                 }

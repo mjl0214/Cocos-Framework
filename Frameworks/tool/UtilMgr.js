@@ -1,7 +1,7 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-23 17:31:34
- * @LastEditTime: 2020-03-28 17:21:17
+ * @LastEditTime: 2020-04-20 14:44:35
  * @LastEditors: mengjl
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\tool\UtilMgr.js
@@ -56,6 +56,21 @@ module.exports = {
         var encryptjs=require('encryptjs');
         var dataString = encryptjs.decrypt(encrypted, secretkey, nBits);
         return dataString;
+    },
+
+    treeNode (node = cc.director.getScene()) {
+        let nameStyle =
+            `color: ${node.parent === null || node.activeInHierarchy ? 'green' : 'grey'}; font-size: 14px;font-weight:bold`;
+        let nameValue = `%c${node.name}`;
+        if (node.childrenCount > 0) {
+            console.groupCollapsed(nameValue, nameStyle);
+            for (let i = 0; i < node.childrenCount; i++) {
+                this.treeNode(node.children[i]);
+            }
+            console.groupEnd();
+        } else {
+            console.log(nameValue, nameStyle);
+        }
     },
 
     findNodeById(id, node)
@@ -156,6 +171,13 @@ module.exports = {
             }
         }
         return format;
+    },
+
+    getTodayTimestamp(timestamp)
+    {
+        var date = new Date(timestamp);
+        var _date = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + '00:00:00:000');
+        return _date.getTime();
     },
 
     getEasyNum(num, save = 2)

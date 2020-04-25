@@ -1,8 +1,8 @@
 /*
  * @Author: mengjl
  * @Date: 2020-03-18 14:22:12
- * @LastEditTime: 2020-03-22 19:18:08
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-17 15:05:42
+ * @LastEditors: zhaozhifei
  * @Description: 
  * @FilePath: \client\assets\Scripts\Frameworks\manager\DataMgr.js
  */
@@ -10,12 +10,16 @@ module.exports = {
 
     _cache_ : {},
 
+    _word_:[],
+
+
     // 放入缓存数据
     setCache(key, value)
     {
         this._cache_[key] = value;
     },
 
+    
     // 取出缓存数据
     getCache(key, value)
     {

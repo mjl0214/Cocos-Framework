@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-18 13:06:04
- * @LastEditTime : 2020-01-03 14:24:54
- * @LastEditors  : mengjl
+ * @LastEditTime: 2020-04-14 15:36:16
+ * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \client\assets\Scripts\Frameworks\unit\PlatformHelper.js
+ * @FilePath: \client\assets\Scripts\Frameworks\helper\PlatformHelper.js
  */
 
 module.exports = {

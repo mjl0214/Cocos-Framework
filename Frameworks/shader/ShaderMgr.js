@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2019-12-15 14:38:54
- * @LastEditTime: 2020-03-31 13:19:31
+ * @LastEditTime: 2020-03-09 14:19:27
  * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \UnitFramework\assets\Script\Frameworks\shader\ShaderMgr.js
+ * @FilePath: \client\assets\Scripts\Frameworks\shader\ShaderMgr.js
  */
 
 let ShaderDef = require("ShaderDef")
@@ -19,7 +19,6 @@ module.exports = {
         cc.game.on(cc.game.EVENT_ENGINE_INITED, () => {
             cc.loader.loadResDir('Effects', cc.EffectAsset, (error, res) => {
                 if (error) {
-                    cc.log('ShaderMgr __init__ ', error);
                     return;
                 }
                 for (let index = 0; index < res.length; index++) {

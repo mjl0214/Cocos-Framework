@@ -2,8 +2,8 @@
  * @Description: In User Settings Edit
  * @Author: mengjl
  * @Date: 2019-07-11 17:12:12
- * @LastEditors  : mengjl
- * @LastEditTime : 2019-12-29 13:11:54
+ * @LastEditors: mengjl
+ * @LastEditTime: 2020-04-21 10:47:27
  */
 
 module.exports = {
@@ -38,7 +38,7 @@ module.exports = {
     playMusic(url, vloume = 1, loop = true)
     {
         var audioUrl = this.getUrl(url);
-        let ResMgr = require("ResMgr");
+        // let ResMgr = require("ResMgr");
 
         this._bg_vloume = vloume;
         var _vloume = 0;
@@ -46,34 +46,42 @@ module.exports = {
             _vloume = vloume;
         }
 
-        ResMgr.loadAsset(audioUrl, cc.AudioClip, (audioClip)=>{
+        unit.ResMgr.loadAsset(audioUrl, cc.AudioClip, (audioClip)=>{
             this.music_id = cc.audioEngine.playMusic(audioClip, loop);
             cc.audioEngine.setMusicVolume(_vloume);
         });
     },
 
-    playEffect(url, vloume = 1)
+    playEffect(url, vloume = 1, loop = false, callback = null)
     {
         if (this.effect_switch == false) {
             return;
         }
         
         var audioUrl = this.getUrl(url);
-        let ResMgr = require("ResMgr");
+        // let ResMgr = require("ResMgr");
 
-        ResMgr.loadAsset(audioUrl, cc.AudioClip, (audioClip)=>{
-            cc.audioEngine.play(audioClip, false, vloume);
+        unit.ResMgr.loadAsset(audioUrl, cc.AudioClip, (audioClip)=>{
+            var audio_id = cc.audioEngine.play(audioClip, loop, vloume);
+            if (callback) {
+                callback(audio_id);
+            }
         });
     },
     
-    playBGM(url, vloume) 
+    playBGM(url, vloume, loop) 
     {
-        this.playMusic(url, vloume);
+        this.playMusic(url, vloume, loop);
     },
     
-    playSFX(url, vloume) 
+    playSFX(url, vloume, loop, callback) 
     {
-        this.playEffect(url, vloume);
+        this.playEffect(url, vloume, loop, callback);
+    },
+
+    stop(audio_id)
+    {
+        cc.audioEngine.stop(audio_id);
     },
 
     setMusicSwitch(off)

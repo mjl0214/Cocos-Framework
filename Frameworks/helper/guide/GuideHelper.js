@@ -1,10 +1,10 @@
 /*
  * @Author: mengjl
  * @Date: 2020-01-13 15:36:55
- * @LastEditTime : 2020-01-13 16:27:31
- * @LastEditors  : mengjl
+ * @LastEditTime: 2020-04-23 10:21:31
+ * @LastEditors: mengjl
  * @Description: 
- * @FilePath: \client\assets\Scripts\Frameworks\tool\guide\GuideHelper.js
+ * @FilePath: \client\assets\Scripts\Frameworks\helper\guide\GuideHelper.js
  */
 
 module.exports = {
@@ -13,6 +13,8 @@ module.exports = {
     m_guide : null,
     m_thread : null,
     m_uniqueID : '',
+
+    m_nodeIdList : new Array(),
 
     setUniqueID(uniqueID)
     {
@@ -144,10 +146,31 @@ module.exports = {
         this.m_thread = unit.ThreadMgr.create('GuiderThread');
         return this.m_thread;
     },
+
+    stopThread()
+    {
+        // 创建协程
+        unit.ThreadMgr.removeByName('GuiderThread');
+        this.m_thread = null;
+    },
     
     startGuide()
     {
         this.m_guide = null;
         this.execGuide();
     },
+
+    setNodeID(node, id)
+    {
+        if (id == 0) {
+            return;
+        }
+        if (this.m_nodeIdList.indexOf(id) != -1) {
+            console.error('node id is already exist ', id);
+            return;
+        }
+        this.m_nodeIdList.push(id);
+        node.setId(id);
+    },
+
 };

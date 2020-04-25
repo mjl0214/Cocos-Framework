@@ -1,9 +1,9 @@
 /*
  * @Description: 对话框基类
  * @Author: mengjl
- * @LastEditors: Please set LastEditors
+ * @LastEditors: zhaozhifei
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2020-03-22 18:04:17
+ * @LastEditTime: 2020-04-10 12:46:40
  */
 
  /**
@@ -184,9 +184,7 @@ cc.Class({
         // console.log('DialogBase onDisable');
     },
 
-    // start () {
-
-    // },
+    // start () {},
 
     // update (dt) {},
 
@@ -198,6 +196,16 @@ cc.Class({
     onLeave()
     {// 对话框被关闭时
         console.log('DialogBase onLeave');
+    },
+
+    setMask(mask)
+    {
+        DialogMgr.setMaskMask(this.__maskId__, mask);
+    },
+
+    setIsInput(input)
+    {
+        DialogMgr.setMaskInput(this.__maskId__, input);
     },
 
     _setMaskId(maskId)
@@ -265,6 +273,7 @@ cc.Class({
 
     closeDialog()
     {
+        unit.AudioMgr.playSFX('click');
         // 两种关闭方式
         DialogMgr.closeDialog(this.node);
         /* 
