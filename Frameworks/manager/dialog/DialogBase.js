@@ -1,9 +1,9 @@
 /*
  * @Description: 对话框基类
  * @Author: mengjl
- * @LastEditors: zhaozhifei
+ * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2020-04-10 12:46:40
+ * @LastEditTime: 2020-04-27 10:49:53
  */
 
  /**
@@ -273,7 +273,6 @@ cc.Class({
 
     closeDialog()
     {
-        unit.AudioMgr.playSFX('click');
         // 两种关闭方式
         DialogMgr.closeDialog(this.node);
         /* 
