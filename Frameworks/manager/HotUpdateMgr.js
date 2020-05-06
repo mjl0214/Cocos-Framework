@@ -1,8 +1,8 @@
 /*
  * @Author: mengjl
  * @Date: 2020-01-02 16:47:41
- * @LastEditTime : 2020-01-08 16:57:07
- * @LastEditors  : mengjl
+ * @LastEditTime: 2020-04-29 15:55:41
+ * @LastEditors: mengjl
  * @Description: 1 createAssetsManager 2 checkUpdate
  * @FilePath: \client\assets\Scripts\Frameworks\manager\HotUpdateMgr.js
  */
@@ -35,6 +35,12 @@ module.exports = {
     setUpdateListener(listener)
     {
         this.m_updateListener = listener;
+    },
+
+    removeUpdataFiles(ups_directory)
+    {
+        var _storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + ups_directory);
+        jsb.fileUtils.removeDirectory(_storagePath);
     },
 
     // 创建AssetsManager
